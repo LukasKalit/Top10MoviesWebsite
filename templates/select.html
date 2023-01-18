@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container ">
+  <div class="row my-4">
+    <h1 class="heading">Select Movie</h1>
+    <form method="post">
+      {% for i in range(json_obj|length) %}
+        <p>
+          <a href="{{ url_for('add_redirect', external_id = json_obj[i]['id'] )}}"> {{ json_obj[i]['title'] }} - {{ json_obj[i]['release_date'] }}</a>
+        </p>
+      {% endfor %}
+    </form>
+  </div>
+</div>
+{% endblock %}

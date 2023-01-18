@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Add Movie{% endblock %}
+
+{% block content %}
+<div class="content">
+  <div class="container">
+    <div class="row my-5">
+      <div class="col">
+
+        <h1 class="heading">Add a Movie</h1>
+
+        <div class="row justify-content-md-center">
+          <form class="col-5" method="post">
+            {{form.csrf_token}}
+            <div>
+              <h4  class=" my-3 text-center">Title of the movie that you want to add.</h4>
+              <div class=" mb-4">{{form.title(placeholder='Title', class_="form-control")}}</div>
+
+              <div class="row justify-content-md-center">
+                <div class="d-grid col-6 mx-auto">
+                  <button class="btn btn-primary" type="submit">Add</button>
+                </div>
+              </div>
+            </div>
+                     
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
